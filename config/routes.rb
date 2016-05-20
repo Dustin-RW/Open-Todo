@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'items/index'
+
+  get 'items/show'
+
+  get 'lists/index'
+
+  get 'lists/show'
+
+  get 'users/index'
+
+  get 'users/show'
+
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

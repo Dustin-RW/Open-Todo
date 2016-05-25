@@ -13,6 +13,12 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  # namespace separates the API routes from the rest of the application routes. defaults: { format: :json} tells the route to support requests in JSON form.
+
+  namespace :api, defaults: { format: :json } do
+    resources :users
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

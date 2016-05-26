@@ -4,9 +4,13 @@ class Api::ItemsController < ApiController
   #before_action :item_authenticated?
 
   def create
+    #user = User.find(params[:user_id])
+
     list = List.find(params[:list_id])
 
-    item = Item.new(item_params)
+    item = Item.create(item_params)
+
+    item.user = User.find(params[:user_id])
 
     if item.save
       render json: item

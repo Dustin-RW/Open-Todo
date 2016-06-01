@@ -26,7 +26,7 @@ class Api::UsersController < ApiController
       user = User.find(params[:id])
       user.destroy
 
-      render json: {}, status: :no_content
+      render json: {}, status: :no_content, :message => "Successful deletion of #{user.full_name}"
 
     rescue ActiveRecord::RecordNotFound
 

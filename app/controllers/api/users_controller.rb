@@ -10,7 +10,7 @@ class Api::UsersController < ApiController
 
   def create
 
-    @user = User.create(user_params)
+    @user = User.new(user_params)
 
     if @user.save
       render :json => @user
@@ -26,7 +26,7 @@ class Api::UsersController < ApiController
       user = User.find(params[:id])
       user.destroy
 
-      render json: {}, status: :no_content, :message => "Successful deletion of #{user.full_name}"
+      render json: { :message => "Successful deletion of #{user.full_name}"}, status: :no_content
 
     rescue ActiveRecord::RecordNotFound
 

@@ -6,11 +6,13 @@ class Api::ItemsController < ApiController
   def create
     #user = User.find(params[:user_id])
 
+    #user = User.find(params[:user_id])
+
     list = List.find(params[:list_id])
 
     item = Item.create(item_params)
 
-    item.user = User.find(params[:user_id])
+    #item.user = User.find(params[:user_id])
 
     if item.save
       render json: item

@@ -6,13 +6,25 @@ class Api::ListsController < ApiController
 
     list = List.new(list_params)
     list.user_id = params[:user_id]
-    
+
     if list.save
       render json: list
     else
       render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
     end
 
+  end
+
+
+  def update
+    list = List.find(params[:id])
+
+    if list.update(list_params)
+      render json: list
+    else
+      render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
+
+    end
   end
 
   def destroy

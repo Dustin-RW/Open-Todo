@@ -22,10 +22,27 @@ class Api::ItemsController < ApiController
 
   end
 
+  def update
+
+    item = Item.find(params[:id])
+
+    item.list_id = params[:list_id]
+
+    item.user_id = params[:user_id]
+
+    if item.update(item_params)
+      render json: item
+    else
+      render json: { errors: item.errors.full_messages }, status: :unprocessable_entity
+
+    end
+
+  end
+
   private
 
   def item_params
-    params.require(:item).permit(:description)
+    params.require(:item).permit(:description, :completed)
   end
 
   def item_authenticated?

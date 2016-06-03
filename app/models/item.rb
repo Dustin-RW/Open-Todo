@@ -5,4 +5,5 @@ class Item < ActiveRecord::Base
 
   validates :description, presence: true
   validates :description, length: { minimum: 2, maximum: 500 }
+
 end
